@@ -1,0 +1,28 @@
+---
+# Enable or disable specific checks using glob patterns.
+# Prepending a '-' removes a check or an entire group of checks.
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  modernize-*,
+  performance-*,
+  readability-*,
+  -cppcoreguidelines-owning-memory,
+  -modernize-use-trailing-return-type,
+  -readability-braces-around-statements
+
+# Turn warnings into errors if you want strict CI/CD enforcement
+WarningsAsErrors: 'bugprone-*,performance-*'
+
+# Configure specific check behaviors
+CheckOptions:
+  - key:             readability-identifier-naming.VariableCase
+    value:           lower_case
+  - key:             readability-identifier-naming.FunctionCase
+    value:           camelBack
+  - key:             modernize-loop-convert.MaxCopySize
+    value:           16
+---
